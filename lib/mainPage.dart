@@ -127,7 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
         }
         else if((DateTime.now().month-_selectedDate.month)<0) {
           year.text=(DateTime.now().year-_selectedDate.year-1).toString();
-          month.text=(DateTime.now().month+12-_selectedDate.month).toString();
+          month.text=(DateTime.now().month+11-_selectedDate.month).toString();
           if((DateTime.now().day-_selectedDate.day)>=0)
           {
               day.text=(DateTime.now().day-_selectedDate.day).toString();
@@ -146,8 +146,8 @@ class _MyHomePageState extends State<MyHomePage> {
           }
           else  {
             year.text=(DateTime.now().year-_selectedDate.year-1).toString();
-            day.text=(DateTime.now().day).toString();
-            month.text=(DateTime.now().month+11-_selectedDate.month-1).toString();
+            day.text=(DateTime.now().day+lastDayOfMonth.day-_selectedDate.day).toString();
+            month.text=(DateTime.now().month+11-_selectedDate.month).toString();
           }
         }
 
@@ -1254,7 +1254,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       onPressed: () {
 
-                        if (int.tryParse(day.text)==null||double.tryParse(imc.text)==null||int.tryParse(year.text)==null||double.tryParse(weight.text)==null||int.tryParse(month.text)==null||double.tryParse(tall.text)==null) {
+                        //if (int.tryParse(day.text)==null||double.tryParse(imc.text)==null||int.tryParse(year.text)==null||double.tryParse(weight.text)==null||int.tryParse(month.text)==null||double.tryParse(tall.text)==null) {
+                        if (double.tryParse(imc.text)==null||double.tryParse(weight.text)==null||double.tryParse(tall.text)==null) {
+                         
                           // setState(() {
                           //   // _errorMessage = 'Please enter a value';
                           // });
@@ -1279,20 +1281,20 @@ class _MyHomePageState extends State<MyHomePage> {
                         else
                         {
                            
-;                          Navigator.push(
+                          Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => OMS(
-                              title: 'Kidian',
+                              title: 'KiDIAN',
                               isMale: _isMale,
                               isSelected_A: _isSelected_A,
                               isSelected_B: _isSelected_B,
                               headlength: headlength.text ,
-                              day: int.parse(day.text),
+                              day: int.tryParse(day.text)==null ? 0 : int.parse(day.text),
                               imc: double.parse(imc.text),
                               weight: double.parse(weight.text),
-                              month: int.parse(month.text),
+                              month: int.tryParse(month.text)==null ? 0 : int.parse(month.text),
                               tall:  double.parse(tall.text),
-                              year:  int.parse(year.text),
+                              year:  int.tryParse(year.text)==null ? 0 : int.parse(year.text),
                             )),
                           );
                         }
@@ -1320,7 +1322,9 @@ class _MyHomePageState extends State<MyHomePage> {
                             color: Colors.white
                         ),textAlign: TextAlign.center,),
                       onPressed: () {
-                        if (int.tryParse(day.text)==null||double.tryParse(imc.text)==null||int.tryParse(year.text)==null||double.tryParse(weight.text)==null||int.tryParse(month.text)==null||double.tryParse(tall.text)==null) {
+                        //if (int.tryParse(day.text)==null||double.tryParse(imc.text)==null||int.tryParse(year.text)==null||double.tryParse(weight.text)==null||int.tryParse(month.text)==null||double.tryParse(tall.text)==null) {
+                        if (double.tryParse(imc.text)==null||double.tryParse(weight.text)==null||double.tryParse(tall.text)==null) {
+                        
                           // setState(() {
                           //   // _errorMessage = 'Please enter a value';
                           // });
@@ -1345,20 +1349,20 @@ class _MyHomePageState extends State<MyHomePage> {
                         else
                         {
 
-                          ;                          Navigator.push(
+                          Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => CDC(
-                              title: 'Kidian',
+                              title: 'KiDIAN',
                               isMale: _isMale,
                               isSelected_A: _isSelected_A,
                               isSelected_B: _isSelected_B,
                               headlength: headlength.text ,
-                              day: int.parse(day.text),
+                              day: int.tryParse(day.text)==null ? 0 : int.parse(day.text),
                               imc: double.parse(imc.text),
                               weight: double.parse(weight.text),
-                              month: int.parse(month.text),
+                              month: int.tryParse(month.text)==null ? 0 : int.parse(month.text),
                               tall:  double.parse(tall.text),
-                              year:  int.parse(year.text),
+                              year:  int.tryParse(year.text)==null ? 0 : int.parse(year.text),
                             )),
                           );
                         }

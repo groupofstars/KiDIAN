@@ -1,6 +1,6 @@
-# KiDIAN
+# kidi
 
-Healthcare KiDIAN mobile application.
+A new Flutter project.
 
 ## Getting Started
 
