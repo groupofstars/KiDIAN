@@ -179,6 +179,8 @@ class _LineChartCustomizedState extends State<LineChartCustomized> {
           shape: DataMarkerType.diamond,
           width: 5 ,
           height: 5,
+
+
         ),
         name: '${filteredNames[dataRows.indexOf(row)]}',
           dataLabelSettings: DataLabelSettings(isVisible: false)

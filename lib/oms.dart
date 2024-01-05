@@ -987,18 +987,18 @@ void diagnose(){
           percent=((currentValue-previouseValue)*(nextNumber-previousNumber)/(nextValue-previouseValue)+previousNumber).toStringAsFixed(1);
         }
         else{
-          int temp=1;
-          if(months<61) {
-            temp=0;
-          }
-          else temp=1;
+          // int temp=1;
+          // if(months<61) {
+          //   temp=0;
+          // }
+          // else temp=1;
 
           percent=percent.replaceAll('%', '');
-          if(currentValue>data[data!.keys.toList()[temp+18]]){
-            percent=((99.9*currentValue)/data[data!.keys.toList()[temp+18]]).toStringAsFixed(1);
+          if(currentValue>data[data!.keys.toList()[18]]){
+            percent=((99.9*currentValue)/data[data!.keys.toList()[18]]).toStringAsFixed(1);
           }
-          else if(currentValue<data[data!.keys.toList()[temp+4]]){
-            percent=((0.1*currentValue)/data[data!.keys.toList()[temp+4]]).toStringAsFixed(1);
+          else if(currentValue<data[data!.keys.toList()[4]]){
+            percent=((0.1*currentValue)/data[data!.keys.toList()[4]]).toStringAsFixed(1);
           }
         }
         setState(() {
