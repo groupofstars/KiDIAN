@@ -1507,7 +1507,7 @@ void diagnose(){
               child:Row(
                 children: [
                   Text(
-                    '* Perimetero \ncefálico/Edad(PC/E):',
+                    '* Perímetro \ncefálico/Edad(PC/E):',
                     style: TextStyle(
                       // fontSize: MediaQuery.of(context).size.width*0.045,
                       fontSize: 16,
@@ -1548,7 +1548,7 @@ void diagnose(){
 
           Padding(
             padding: EdgeInsets.symmetric(
-              horizontal: MediaQuery.of(context).size.width * 0.08,
+              horizontal: MediaQuery.sizeOf(context).width * 0.08,
               vertical: MediaQuery.of(context).size.height * 0.01,
             ),
             child: Table(
@@ -1610,7 +1610,7 @@ void diagnose(){
                         ),
                       ),
                     ),
-                  ),
+                  )
                 ],
               ),
               TableRow(

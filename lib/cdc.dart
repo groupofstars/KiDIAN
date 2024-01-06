@@ -1398,7 +1398,7 @@ void diagnose(){
               child:Row(
                 children: [
                   Text(
-                    '* Perimetero \ncefálico/Edad(PC/E):',
+                    '* Perímetro \ncefálico/Edad(PC/E):',
                     style: TextStyle(
                       // fontSize: MediaQuery.of(context).size.width*0.045,
                       fontSize: 18,
