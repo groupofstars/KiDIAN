@@ -6,14 +6,12 @@ import 'package:flutter/services.dart' show Color, rootBundle;
 import 'dart:io';
 
 import 'package:syncfusion_flutter_charts/charts.dart';
-
+import 'package:kidian/language/languages.dart';
 // Future<Map<String, dynamic>?> loadData(String table,String where_name,String name) async {
 //   final db = await openDB();
 //   final List<Map<String, dynamic>> data = await db.query(table, where: where_name + ' = ?',whereArgs : [name] );
 //   return data.isNotEmpty? data.first : null;
 // }
-
-
 
 
 class LineChartCustomized extends StatefulWidget {
@@ -120,7 +118,7 @@ class _LineChartCustomizedState extends State<LineChartCustomized> {
   }
   Future<Widget> chartToRun(int samplingCount) async {
 
-
+    Locale lo=WidgetsBinding.instance.window.locale;
     List<List<ChildHeight>> dataRows = [];
 
     List<String> filteredNames = [];

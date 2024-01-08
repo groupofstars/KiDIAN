@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'LineChart.dart';
-
+import 'package:kidian/language/languages.dart';
 class graph extends StatefulWidget {
   const graph({
     super.key,
@@ -113,7 +113,7 @@ class _graphOMSState extends State<graph> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Diagnóstico Antropométrico',
+                Languages.of(context)!.anthroDiagnosis,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: MediaQuery.of(context).size.width*0.045,
@@ -160,7 +160,7 @@ class _graphOMSState extends State<graph> {
                     //     },
                     //     child:
                     //
-                    Text('GRAFICAR',
+                    Text(Languages.of(context)!.graph,
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 27,
@@ -186,7 +186,7 @@ class _graphOMSState extends State<graph> {
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.08),
                     child: Text(
-                      'Selecciona el método a graficar:',
+                      Languages.of(context)!.select_method_plot+':',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -236,7 +236,7 @@ class _graphOMSState extends State<graph> {
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.08),
                     child: Text(
-                      'Selecciona el indicador a graficar:',
+                      Languages.of(context)!.select_indicator_plot+':',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -288,7 +288,7 @@ class _graphOMSState extends State<graph> {
                           }
                         },
                         child: Text(
-                          'Peso/Talla (P/T)',
+                          Languages.of(context)!.weight+'/'+Languages.of(context)!.tall+' ('+Languages.of(context)!.weight.characters.first+'/'+Languages.of(context)!.tall.characters.first+')',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 20, // Adjust the font size as needed
@@ -349,7 +349,7 @@ class _graphOMSState extends State<graph> {
                           }
                         },
                         child: Text(
-                          'IMC/Edad (IMC/E)',
+                          Languages.of(context)!.bmi+'/'+Languages.of(context)!.age+' ('+Languages.of(context)!.bmi+'/'+Languages.of(context)!.age.characters.first+')',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 20, // Adjust the font size as needed
@@ -410,7 +410,7 @@ class _graphOMSState extends State<graph> {
                           }
                         },
                         child: Text(
-                          'Talla/Edad (T/E)',
+                          Languages.of(context)!.tall+'/'+Languages.of(context)!.age+' ('+Languages.of(context)!.tall.characters.first+'/'+Languages.of(context)!.age.characters.first+')',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 20, // Adjust the font size as needed

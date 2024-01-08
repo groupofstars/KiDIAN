@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 // import 'package:path/path.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'graph.dart';
+import 'package:kidian/language/languages.dart';
 
 class OMS extends StatefulWidget {
   const OMS({
@@ -63,7 +64,6 @@ class _OMSState extends State<OMS> {
 
   double currentIMC=1;
   bool pt_formula=false;
-
   List<String> items = [
     'Puntuación Z',
     'Percentiles',
@@ -417,9 +417,12 @@ void diagnose(){
   });
 }
   @override
-  void initState()  {
+  void initState() {
     // TODO: implement initState
     super.initState();
+    initialize();
+  }
+  void initialize(){
 
     // weight_tall.text=(widget.weight/(widget.tall*0.01)).toStringAsFixed(2);
     // weight_age.text=(widget.weight).toStringAsFixed(2);
@@ -1196,6 +1199,8 @@ void diagnose(){
     final appBarHeight = screenHeight * 0.09;
     bool _isCompositionButtonVisible = true;
 
+
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
@@ -1206,7 +1211,7 @@ void diagnose(){
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Diagnóstico Antropométrico',
+                Languages.of(context)!.anthroDiagnosis,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 16,
@@ -1257,7 +1262,7 @@ void diagnose(){
                 //     },
                 //     child:
                 //
-                    Text('OMS 2006,2007',
+                    Text(Languages.of(context)!.who +' 2006,2007',
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 24,
@@ -1285,7 +1290,7 @@ void diagnose(){
               child:Row(
                 children: [
                   Text(
-                    'INDICADOR: ',
+                    Languages.of(context)!.INDICATOR+': ',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.black,
@@ -1295,7 +1300,7 @@ void diagnose(){
                   // SizedBox(width: MediaQuery.of(context).size.width * 0.16,),
 
                   Text(
-                    'Valor esperado (p50)',
+                    Languages.of(context)!.expectedValue+' (p50)',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.black,
@@ -1317,7 +1322,7 @@ void diagnose(){
               child:Row(
                 children: [
                   Text(
-                    '* Peso/Talla (P/T):',
+                    '* '+Languages.of(context)!.weight+'/'+Languages.of(context)!.tall+' ('+Languages.of(context)!.weight.characters.first+'/T):',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.black,
@@ -1366,7 +1371,7 @@ void diagnose(){
               child:Row(
                 children: [
                   Text(
-                    '* IMC/Edad (IMC/E):',
+                    '* '+Languages.of(context)!.bmi+'/'+Languages.of(context)!.age+' ('+Languages.of(context)!.bmi+'/'+Languages.of(context)!.age.characters.first+'):',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.black,
@@ -1414,7 +1419,7 @@ void diagnose(){
               child:Row(
                 children: [
                   Text(
-                    '* Peso/Edad (P/E):',
+                    '* '+Languages.of(context)!.weight+'/'+Languages.of(context)!.age+' ('+Languages.of(context)!.weight.characters.first+'/'+Languages.of(context)!.age.characters.first+'):',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.black,
@@ -1460,7 +1465,7 @@ void diagnose(){
               child:Row(
                 children: [
                   Text(
-                    '* Talla/Edad (T/E):',
+                    '* '+Languages.of(context)!.tall+'/'+Languages.of(context)!.age+' ('+Languages.of(context)!.tall.characters.first+'/'+Languages.of(context)!.age.characters.first+'):',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.black,
@@ -1506,8 +1511,10 @@ void diagnose(){
               ),
               child:Row(
                 children: [
+                  Expanded(
+                  child:
                   Text(
-                    '* Perímetro \ncefálico/Edad(PC/E):',
+                    '* '+Languages.of(context)!.headLength+'/'+Languages.of(context)!.age+' ('+Languages.of(context)!.headLength.characters.first+'C/'+Languages.of(context)!.age.characters.first+'):',
                     style: TextStyle(
                       // fontSize: MediaQuery.of(context).size.width*0.045,
                       fontSize: 16,
@@ -1515,7 +1522,8 @@ void diagnose(){
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  // SizedBox(width: MediaQuery.of(context).size.width * 0.01,),
+                  ),
+                  SizedBox(width: MediaQuery.of(context).size.width * 0.01,),
                   Expanded(
                     child: TextField(
                       controller: headlength_age,
@@ -1562,10 +1570,11 @@ void diagnose(){
                   TableCell(
                     child: Center(
                       child: Text(
-                        'Indicador',
+                        textAlign: TextAlign.center,
+                        Languages.of(context)!.indicator,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 16,
+                          fontSize: MediaQuery.of(context).size.width * 0.033,
                           color: Colors.black,
                         ),
                       ),
@@ -1575,24 +1584,27 @@ void diagnose(){
 
                   TableCell(
                    child: Center(
-                    child: Text(
-                      'Z-Score',//Puntuación Z
+                    child:Expanded( child: Text(
+                      Languages.of(context)!.z_score,//Puntuación Z
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                          fontSize: 16,
+                          fontSize: MediaQuery.of(context).size.width * 0.033,
                           color: Colors.black,
                        ),
                       ),
+                    ),
                    ),
                     verticalAlignment: TableCellVerticalAlignment.middle,
                   ),
                   TableCell(
                     child: Center(
                       child: Text(
-                       'Percentil',
+                        textAlign: TextAlign.center,
+                       Languages.of(context)!.percentile,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 16,
+                          fontSize: MediaQuery.of(context).size.width * 0.033,
                           color: Colors.black,
                         ),
                       ),
@@ -1602,10 +1614,11 @@ void diagnose(){
                   TableCell(
                     child: Center(
                       child: Text(
-                        '% Mediana',
+                        textAlign: TextAlign.center,
+                        '% '+Languages.of(context)!.median,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 16,
+                          fontSize: MediaQuery.of(context).size.width * 0.033,
                           color: Colors.black,
                         ),
                       ),
@@ -1618,7 +1631,7 @@ void diagnose(){
                   TableCell(
                     child: Center(
                       child: Text(
-                        'P/T',
+                        Languages.of(context)!.weight.characters.first+'/'+Languages.of(context)!.tall.characters.first,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -1671,7 +1684,7 @@ void diagnose(){
                   TableCell(
                     child: Center(
                       child: Text(
-                        'IMC/E',
+                        Languages.of(context)!.bmi+'/'+Languages.of(context)!.age.characters.first,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -1724,7 +1737,7 @@ void diagnose(){
                   TableCell(
                     child: Center(
                       child: Text(
-                        'P/E',
+                    Languages.of(context)!.weight.characters.first+'/'+Languages.of(context)!.age.characters.first,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -1777,7 +1790,7 @@ void diagnose(){
                     TableCell(
                       child: Center(
                         child: Text(
-                          'T/E',
+                    Languages.of(context)!.tall.characters.first+'/'+Languages.of(context)!.age.characters.first,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
@@ -1831,7 +1844,7 @@ void diagnose(){
                     TableCell(
                       child: Center(
                         child: Text(
-                          'PC/E',
+                          Languages.of(context)!.weight.characters.first+'C/'+Languages.of(context)!.age.characters.first,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
@@ -1890,7 +1903,7 @@ void diagnose(){
             child:Align(
               alignment: Alignment.centerLeft,
               child:
-                Text('INTERPRETACIÓN Y DIAGNÓSTICO'
+                Text(Languages.of(context)!.intepretation_and_diagnosis
                   ,style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -1909,7 +1922,7 @@ void diagnose(){
               alignment: Alignment.centerLeft,
               child:
                // Text('Seleccionar método de interpretación'
-               Text('Selecciona el método de interpretación'
+               Text(Languages.of(context)!.select_intepretation_method
                   ,style: TextStyle(
                       fontSize: 16,
                       // fontWeight: FontWeight.bold,
@@ -2016,7 +2029,7 @@ void diagnose(){
                       )),
                     );
                   },
-                  child: Text('GRAFICAR',
+                  child: Text(Languages.of(context)!.graph,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 22
