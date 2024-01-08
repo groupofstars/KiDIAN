@@ -24,48 +24,62 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer(
         builder: (context, ref, _) {
-          return MaterialApp(
-            localizationsDelegates: [
-              AppLocalizationDelegate(),
-              GlobalMaterialLocalizations.delegate,
-              DefaultMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-              DefaultMaterialLocalizations.delegate,
-            ],
-            supportedLocales: [
-              const Locale('en'),
-              const Locale('es'),
-              const Locale('en', 'US'),
-              const Locale('es', 'MX'),
-            ],
-            locale: ref.watch(localeProvider).getProviderLocale(),
-            // localeResolutionCallback: (locale, supportedLocales) {
-            //   for (var supportedLocale in supportedLocales) {
-            //     if (supportedLocale.languageCode == locale?.languageCode &&
-            //         supportedLocale.countryCode == locale?.countryCode) {
-            //       return supportedLocale;
-            //     }
-            //   }
-            //   return supportedLocales.first;
-            // },
-            debugShowCheckedModeBanner: false,
-            title: 'KiDIAN',
-            theme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
-              useMaterial3: true,
-            ),
-            home: FutureBuilder<void>(
-              future: Future.delayed(Duration(seconds: 3)),
-              builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
-                if (snapshot.connectionState == ConnectionState.done) {
-                  return SingingPage();
-                } else {
-                  return LoadingPage();
-                }
-              },
-            ),
-          );
+          final locale = ref.watch(localeProvider).getProviderLocale();
+          return FutureBuilder<Locale>(
+              future: locale,
+              builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return MaterialApp(
+                      localizationsDelegates: [
+                        AppLocalizationDelegate(),
+                        GlobalMaterialLocalizations.delegate,
+                        DefaultMaterialLocalizations.delegate,
+                        GlobalWidgetsLocalizations.delegate,
+                        GlobalCupertinoLocalizations.delegate,
+                        DefaultMaterialLocalizations.delegate,
+                      ],
+                      supportedLocales: [
+                        const Locale('en'),
+                        const Locale('es'),
+                        const Locale('en', 'US'),
+                        const Locale('es', 'MX'),
+                      ],
+                      locale: snapshot.data,
+                      // localeResolutionCallback: (locale, supportedLocales) {
+                      //   for (var supportedLocale in supportedLocales) {
+                      //     if (supportedLocale.languageCode == locale?.languageCode &&
+                      //         supportedLocale.countryCode == locale?.countryCode) {
+                      //       return supportedLocale;
+                      //     }
+                      //   }
+                      //   return supportedLocales.first;
+                      // },
+                      debugShowCheckedModeBanner: false,
+                      title: 'KiDIAN',
+                      theme: ThemeData(
+                        colorScheme: ColorScheme.fromSeed(
+                            seedColor: Colors.black),
+                        useMaterial3: true,
+                      ),
+                      home: FutureBuilder<void>(
+                        future: Future.delayed(Duration(seconds: 3)),
+                        builder: (BuildContext context,
+                            AsyncSnapshot<void> snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.done) {
+                            return SingingPage();
+                          } else {
+                            return LoadingPage();
+                          }
+                        },
+                      ),
+                    );
+                  }
+                  else {
+                    return CircularProgressIndicator();
+                  }
+              }
+              );
         }
     );
   }

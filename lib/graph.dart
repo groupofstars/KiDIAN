@@ -291,7 +291,7 @@ class _graphOMSState extends State<graph> {
                           Languages.of(context)!.weight+'/'+Languages.of(context)!.tall+' ('+Languages.of(context)!.weight.characters.first+'/'+Languages.of(context)!.tall.characters.first+')',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 20, // Adjust the font size as needed
+                              fontSize: MediaQuery.of(context).size.width * 0.043// Adjust the font size as needed
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -352,7 +352,7 @@ class _graphOMSState extends State<graph> {
                           Languages.of(context)!.bmi+'/'+Languages.of(context)!.age+' ('+Languages.of(context)!.bmi+'/'+Languages.of(context)!.age.characters.first+')',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 20, // Adjust the font size as needed
+                            fontSize: MediaQuery.of(context).size.width * 0.043, // Adjust the font size as needed
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -361,7 +361,7 @@ class _graphOMSState extends State<graph> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0),
                           ),
-                          minimumSize: Size(double.infinity, 60), // Adjust the height as needed
+                          minimumSize: Size(double.infinity,MediaQuery.of(context).size.width * 0.12), // Adjust the height as needed
                         ),
                       ),
                     ),
@@ -410,10 +410,11 @@ class _graphOMSState extends State<graph> {
                           }
                         },
                         child: Text(
+
                           Languages.of(context)!.tall+'/'+Languages.of(context)!.age+' ('+Languages.of(context)!.tall.characters.first+'/'+Languages.of(context)!.age.characters.first+')',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 20, // Adjust the font size as needed
+                              fontSize: MediaQuery.of(context).size.width * 0.043, // Adjust the font size as needed
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -423,7 +424,7 @@ class _graphOMSState extends State<graph> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.0),
                           ),
-                          minimumSize: Size(double.infinity, 60), // Adjust the height as needed
+                          minimumSize: Size(double.infinity, MediaQuery.of(context).size.width * 0.12), // Adjust the height as needed
                         ),
                       ),
                     ),

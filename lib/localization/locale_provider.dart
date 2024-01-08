@@ -6,11 +6,10 @@ class LocaleProvider extends ChangeNotifier {
 
   Locale? _locale = Locale('es');
   Locale? get locale => _locale;
-  Locale? getProviderLocale() {
-    getLocale().then((value) => {
-      _locale=value
-    });
-    return _locale;
+  Future<Locale>? getProviderLocale() async {
+    var value = await getLocale();
+    _locale = value;
+    return _locale!;
   }
   void setProviderLocale(Locale newLocale) {
     _locale = newLocale;
